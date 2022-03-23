@@ -1,23 +1,44 @@
-import mapboxgl from "mapbox-gl";
-import { useEffect } from "react";
+import { useEffect, useContext } from 'react'
+import mapboxgl from 'mapbox-gl'
+import { UberContext } from '../context/uberContext'
 
 const style = {
-  wrapper: "flex-1 h-full w-full",
-};
+  wrapper: `flex-1 h-full w-full`,
+}
 
-mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
+mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN
 
 const Map = () => {
+  const { pickupCoordinates, dropoffCoordinates } = useContext(UberContext)
+
   useEffect(() => {
     const map = new mapboxgl.Map({
-      container: "map",
-      style: "mapbox://styles/0x-zoro/cl129oxnb000j15p72oo47lv6",
+      container: 'map',
+      style: 'mapbox://styles/0x-zoro/cl129oxnb000j15p72oo47lv6',
       center: [-99.29011, 39.39172],
       zoom: 3,
-    });
-  }, []);
+    })
 
-  return <div className={style.wrapper} id="map" />;
-};
+    if (pickupCoordinates) {
+      addToMap(map, pickupCoordinates)
+    }
 
-export default Map;
+    if (dropoffCoordinates) {
+      addToMap(map, dropoffCoordinates)
+    }
+
+    if (pickupCoordinates && dropoffCoordinates) {
+      map.fitBounds([dropoffCoordinates, pickupCoordinates], {
+        padding: 400,
+      })
+    }
+  }, [pickupCoordinates, dropoffCoordinates])
+
+  const addToMap = (map, coordinates) => {
+    const marker1 = new mapboxgl.Marker().setLngLat(coordinates).addTo(map)
+  }
+
+  return <div className={style.wrapper} id='map' />
+}
+
+export default Map
