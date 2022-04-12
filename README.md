@@ -8,8 +8,8 @@
 
 ## Meta
 
-0x-Zoro
+0x-Alan
 
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
-[https://github.com/0x-Zoro/](https://github.com/0x-Zoro)
+[https://github.com/0x-Alan/Web3-Uber](https://github.com/0x-Alan/Web3-Uber)
