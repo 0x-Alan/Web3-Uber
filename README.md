@@ -2,7 +2,7 @@
 > Web3 Uber - Request a ride to your favorite destination and pay with $ETH Ξ
 > Utilized Next.js, Tailwind.css, Ethers.js, Vercel.io and GROQ (Sanity.io)
 
-[https://web3-uber-0x-zoro.vercel.app/](https://web3-uber-0x-zoro.vercel.app/)
+[https://web3-uber-0x-alan.vercel.app/](https://web3-uber-0x-alan.vercel.app/)
 
 ![](header.png)
 
